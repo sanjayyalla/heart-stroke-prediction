@@ -1,13 +1,20 @@
 import streamlit as st
 import pandas as pd
 import joblib
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+MODEL_DIR = BASE_DIR / "model"
+
 
 # -----------------------------
 # Load saved model and artifacts
 # -----------------------------
-model = joblib.load("../model/best_model.pkl")
-scaler = joblib.load("../model/scaler.pkl")
-expected_columns = joblib.load("../model/feature_columns.pkl")
+model = joblib.load(MODEL_DIR / "best_model.pkl")
+scaler = joblib.load(MODEL_DIR / "scaler.pkl")
+expected_columns = joblib.load(MODEL_DIR / "feature_columns.pkl")
+
+
 
 numeric_features = [
     "Age",
